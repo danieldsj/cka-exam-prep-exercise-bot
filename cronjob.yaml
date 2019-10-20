@@ -1,0 +1,27 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: cka-exam-prep-exercise-bot
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: cka-exam-prep-exercise-bot
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - image: danieldsj/cka-exam-prep-exercise-bot
+            name: cka-exam-prep-exercise-bot
+            resources: {}
+            env:
+             - name: WEBHOOK_URL
+               valueFrom:
+                 configMapKeyRef:
+                   name: cka-exam-prep-exercise-bot
+                   key: WEBHOOK_URL
+          restartPolicy: OnFailure
+  schedule: 00 10,15 * * *

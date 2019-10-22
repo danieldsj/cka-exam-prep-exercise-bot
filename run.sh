@@ -2,7 +2,7 @@
 EXERCISE="$(shuf -n 1 exercises.txt)"
 
 # Check if WEBHOOK_URL is present.
-if [ -z "${WEBHOOK_URL}"]
+if [ -z "${WEBHOOK_URL}" ]
 then
 	# If no environment varibale, send error to stderr.
 	echo "No WEBHOOK_URL detected, did not perform POST." >> /dev/stderr
